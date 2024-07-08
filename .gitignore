@@ -1,5 +1,4 @@
 boot.bin
 boot.elf
-boot.o
-pm.o
+*.o
 boot.flp
