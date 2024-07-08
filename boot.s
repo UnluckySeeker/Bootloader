@@ -20,16 +20,14 @@ int 0x13
 jc disk_error
 
 mov bx, 0x7E00
-mov ax, [bx]
-cmp ax, 0xFF
-jne invalid_sig_error
+jmp bx
 
 cli
 hlt
 
 disk_error:
-push offset message
-push [message_sz]
+push offset disk_error_message
+push [disk_error_message_sz]
 call print_text
 cli
 hlt
@@ -64,10 +62,10 @@ pop bx
 
 ret
 
-message:
+disk_error_message:
 .ascii "Failed to read bootloader!"
-message_sz:
-.word . - message
+disk_error_message_sz:
+.word . - disk_error_message
 invalid_sig:
 .ascii "Invalid bootloader signature!"
 invalid_sig_sz:
