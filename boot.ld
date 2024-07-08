@@ -23,6 +23,12 @@ SECTIONS
         pm.o(.*);
     }
 
+    .entered : SUBALIGN(4)
+    {
+        entered.o(.text);
+        entered.o(.*);
+    }
+
     /DISCARD/ :
     {
         *(.eh_frame);

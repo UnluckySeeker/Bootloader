@@ -1,6 +1,8 @@
 .code16
 .intel_syntax noprefix
 .text
+.extern _entered_pm
+
 _pm_start:
 mov bx, offset hello_world
 mov ah, 0x0e
