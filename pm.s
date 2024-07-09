@@ -12,8 +12,8 @@ mov al, [bx]
 int 0x10
 inc bx
 dec cx
-cmp cx, 0
-jne print
+test cx, cx
+jnz print
 cli
 hlt
 

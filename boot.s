@@ -13,9 +13,9 @@ mov es, ax
 mov bx, 0x7E00
 mov ah, 0x02
 mov al, 15
-mov ch, 0
+xor ch, ch
 mov cl, 2
-mov dh, 0
+xor dh, dh
 int 0x13
 jc disk_error
 
@@ -55,8 +55,8 @@ mov al, byte [bx]
 int 0x10
 inc bx
 dec cx
-cmp cx, 0
-jne .print_text_loop
+test cx, cx
+jnz .print_text_loop
 
 pop bx
 
